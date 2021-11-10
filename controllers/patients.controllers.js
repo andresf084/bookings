@@ -29,6 +29,20 @@ ctrlPatients.delete = async (req,res) => {
     res.json({status : true});
 }
 
+ctrlPatients.update = async (req,res) => {
+  console.log(req.body);
+  const {Patient_Document, Patient_Name, Patient_Phone, Patient_Mail, Patient_Status} = req.body;
+  await Patients.findOneAndUpdate({ _id: _id },
+    {Patient_Document: Patient_Document,
+    Patient_Name: Patient_Name,
+    Patient_Phone: Patient_Phone,
+    Patient_Mail: Patient_Mail,
+    Patient_Status: Patient_Status
+  })
+  res.json({status: true});
+}
+
+
 /*ctrlPatients.put = async (req, res) => {
   var patients = req.patients;
 
